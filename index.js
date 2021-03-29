@@ -58,7 +58,7 @@ app.get('/events', (req, res) => {
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World, This is heroku home page!')
 })
 
 app.listen(process.env.PORT || 5050, () => {
