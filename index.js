@@ -45,22 +45,24 @@ app.get('/events', (req, res) => {
   })
 })
 
-// app.delete('/deleteEvent/:id', (req, res) =>{
+app.delete('/deleteEvent/:id', (req, res) =>{
 
-//   const id = ObjectID(req.params.id);
-//   console.log('delete text', id);
-//   recapCollection.findOneAndDelete({_id: id})
-//   .then((err, documents) => res.send(!!documents.value))
-// })
-
-app.delete('/delete/:id', (req, res) => {
-  console.log(req.params.id)
-  RegisteredEventCollection.deleteOne({_id: ObjectId(req.params.id)})
-  .then(result => {
-    console.log(result);
-    res.send(result.deletedCount > 0);
-  })
+  const id = ObjectID(req.params.id);
+  console.log('delete text', id);
+  recapCollection.findOneAndDelete({_id: id})
+  .then((err, documents) => res.send(!!documents.value))
 })
+
+
+
+// app.delete('/delete/:id', (req, res) => {
+//   console.log(req.params.id)
+//   RegisteredEventCollection.deleteOne({_id: ObjectId(req.params.id)})
+//   .then(result => {
+//     console.log(result);
+//     res.send(result.deletedCount > 0);
+//   })
+// })
 
 
 
