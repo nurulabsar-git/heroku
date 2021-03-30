@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
+const { ObjectID } = require('bson');
 require('dotenv').config()
 
 
@@ -42,6 +44,14 @@ app.get('/events', (req, res) => {
     console.log('from data base',items)
 
   })
+})
+
+app.delete('/deleteEvent/:id', (req, res) =>{
+
+  const id = ObjectID(req.params.id);
+  console.log('delete text', id);
+  recapCollection.findOneAndDelete({_id: id})
+  .then(documents => res.send(!!documents.value))
 })
 
 
