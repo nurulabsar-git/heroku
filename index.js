@@ -49,8 +49,10 @@ app.delete('/deleteEvent/:id', (req, res) =>{
 
   const id = ObjectID(req.params.id);
   console.log('delete text', id);
-  recapCollection.findOneAndDelete({_id: id})
-  .then((err, documents) => res.send(!!documents.value))
+  recapCollection.deleteOne({_id: id})
+  .then((err, documents) => res.send({
+    success: true
+  }))
 })
 
 
